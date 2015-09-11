@@ -1,0 +1,54 @@
+.popup-closing .popup-view, .popup-opened .popup-view, .popup-opening .popup-view {
+  display: block;
+  }
+  .popup-view {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  opacity: 1;
+  -webkit-transition: opacity .25s ease;
+  transition: opacity .25s ease;
+}
+.popup {
+  z-index: 100;
+  position: relative;
+}
+.popup__holder {
+  width: 100%;
+  position: relative;
+}
+.popup-close {
+  position: absolute;
+  top: 22px;
+  width: 24px;
+  height: 24px;
+  margin: 0 0 0 558px;
+  background: url(/images/sprite.png) -476px -157px no-repeat;
+  }
+  .popup-close, .popup-next, .popup-prev {
+  -webkit-animation: full-fade-in 300ms ease 600ms both;
+  animation: full-fade-in 300ms ease 600ms both;
+  display: block;
+  left: 50%;
+  z-index: 1000;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  cursor: pointer;
+  }
+  .popup-prev {
+  left: auto;
+  right: 50%;
+  margin: -47px 547px 0 0;}
+  .popup-next, .popup-prev {
+  height: 76px;
+  margin: -47px 0 0 547px;
+  position: fixed;
+  top: 50%;
+  width: 42px;
+}
+.popup-slideset {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+

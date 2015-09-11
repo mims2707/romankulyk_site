@@ -1,0 +1,59 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+</IfModule>
+
+#Options All
+
+	<IfModule deflate_module>
+    AddOutputFilterByType            \
+     DEFLATE                         \
+      application/javascript         \
+     text/css                       \
+      text/html                      \
+      text/javascript                \
+      text/plain                     \
+      text/xml						 \
+		BrowserMatch ^Mozilla/4 gzip-only-text/html
+		BrowserMatch ^Mozilla/4.0[678] no-gzip
+	BrowserMatch bMSIE !no-gzip !gzip-only-text/html
+	<ifmodule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_item_include file \.js$
+	mod_gzip_item_include file \.css$ 
+	</ifmodule>
+	  </IfModule>
+
+<IfModule mod_expires.c>
+	<filesmatch ".(jpg|jpeg|gif|png|ico|css|js)$">
+	ExpiresActive on
+	ExpiresDefault "access plus 1 month"
+	</filesmatch>
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+ErrorDocument 400 /errors.php
+ErrorDocument 403 /errors.php
+ErrorDocument 404 /errors.php
+ErrorDocument 405 /errors.php
+ErrorDocument 408 /errors.php
+ErrorDocument 500 /errors.php
+ErrorDocument 502 /errors.php
+ErrorDocument 504 /errors.php
+Options All
